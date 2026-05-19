@@ -37,3 +37,7 @@ printf '%s\n' '{"api":"encode","store_dir":".p-cfl-state","input":{"message":"bo
 | `examples/info_metrics.sh` | ② KL 散度 + ③ Shannon 熵 — 低熵 input 拒收，KL 度量不确定性下降 |
 
 TODO（后续轮次）：`examples/bornfly_signed.sh` — 需要独立 Ed25519 keypair generator helper（违反 single binary 风格暂留）。当前 `TestFromAuthenticationModes` 已覆盖 bornfly 签名验签路径。
+
+## Source note
+
+`from.type=human` is accepted for direct human-entered information and starts as `candidate`. `from.type=bornfly` remains the signed, stronger source that can start as `internal`.

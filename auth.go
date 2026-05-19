@@ -25,6 +25,9 @@ func validateFrom(from FromSource, what any) error {
 		if !ed25519.Verify(ed25519.PublicKey(pub), canonicalBytes(what), sig) {
 			return errors.New("bornfly signature verification failed")
 		}
+	case "human":
+		// Human-entered information is a valid source but starts as candidate.
+		// Signed bornfly input remains a stricter, internal-starting source.
 	case "cfl":
 		if from.CFLID == "" || from.Cert == "" {
 			return errors.New("cfl source requires cfl_id and cert")

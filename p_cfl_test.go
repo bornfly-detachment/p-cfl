@@ -93,7 +93,7 @@ func TestFromAuthenticationModes(t *testing.T) {
 	store := t.TempDir()
 	where := SpaceContext{Project: "auth"}
 	what := map[string]any{"statement": "Authentication mode has sufficient information density for Pattern CFL"}
-	sources := []FromSource{bornflySource(t, what), {Type: "cfl", CFLID: "p-cfl-test", Layer: "L0", Cert: "sha256:cert"}, modelSource(), {Type: "v-check", VCFLID: "l0-v-hash-cfl", RecordHash: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}
+	sources := []FromSource{bornflySource(t, what), {Type: "human"}, {Type: "cfl", CFLID: "p-cfl-test", Layer: "L0", Cert: "sha256:cert"}, modelSource(), {Type: "v-check", VCFLID: "l0-v-hash-cfl", RecordHash: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}}
 	for _, src := range sources {
 		resp := handle(Request{API: "encode", StoreDir: store, Input: what, From: src, Where: where}, time.Now())
 		if resp.Verdict != "pass" {

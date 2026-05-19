@@ -22,3 +22,9 @@ Moved the local Git sync clone into the shared Intelligence Resource Management 
 ```
 
 This path is now the canonical local runtime path for cross-project calls. The previous loose top-level `/Users/Shared/p-cfl` path should be treated as retired.
+
+## 2026-05-19 human source support
+
+Value-layer classifier surfaced a source-boundary bug: browser-entered human text was encoded as `from.type=cfl`, which confused the Pattern constructor with the information origin.
+
+Fix: `p-cfl` now accepts `from.type=human` for direct human-entered information. It starts as `candidate`; signed `bornfly` remains the stricter internal-starting source.
